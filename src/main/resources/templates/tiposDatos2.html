@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${miTituloDePagina}"></title>
+   
+    <!-- Concatenando un valor -->
+    <!-- Concantendo al valor a la variable -->
+    <!-- <title th:text="${miTituloDePagina + ' gatos'}"></title> -->
+    
+    <link rel="stylesheet" href="/css/arreglitos.css" type="text/css">
+
+    <style>
+        table, tr, td {
+            border: 1px solid rgb(7, 66, 134)
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="nav">
+        <a href="/app/inicio">
+            <img src="/icons/home.svg" alt="">
+        </a> &nbsp;&nbsp;&nbsp;<--- Por aqui puedes vovler al inicio (<small>asies, para esto si me tome el tiempo, salu2</small>)
+    </div>
+
+    <div>
+        <h3> Mi persona creada </h3>
+
+        <!-- Error: Referencias al objeto pero no a un metodo en concreto -->
+        <span th:text="${ objetoPersona }"></span>
+
+        <br>
+
+        Nombre: <span th:text="${ objetoPersona.getNombre }"></span>
+        <br>
+        Apellido: <span th:text="${ objetoPersona.getApellido }"></span>
+        <br>
+        Edad: <span th:text="${ objetoPersona.getEdad }"></span>
+
+
+        <h3>Iterar una lista de objetos</h3>
+
+        <table>
+            <tr>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Edad</td>
+            </tr>
+            <tr th:each=" persona : ${ listaPersonas } ">
+                <td th:text="${ persona.getNombre }"></td>
+                <td th:text="${ persona.getApellido }"></td>
+                <td th:text="${ persona.getEdad }"></td>
+            </tr>
+        </table>
+
+
+        <h3>Obteniendo los datos de un Map - I (uno)</h3>
+
+        Mi nombre es: <span th:text="${ miMapa['dato1'] }"></span> <br>
+        Mi nombre es: <span th:text="${ miMapa.dato2 }"></span>
+
+
+        <h3>Obteniendo For each de mapa</h3>
+
+        <div th:each=" nombre : ${ miMapa } ">
+            <span th:text="${ nombre }"></span>
+        </div>
+
+        <h3>Obtiendo elementos map con objetos</h3>
+
+        <div>
+            <h3>Gatos</h3>
+            
+            <div>
+                <!-- Nombre: <span th:text="${ mapaGatosObjetos['gato1'].getNombre }"></span> <br>
+                Color: <span th:text="${ mapaGatosObjetos['gato1'].getColor }"></span> -->
+
+                Nombre: <span th:text="${ mapaGatosObjetos.gato1.getNombre }"></span> <br>
+                Color: <span th:text="${ mapaGatosObjetos.gato1.getColor }"></span>
+                <hr>
+            </div>
+            <div>
+                Nombre: <span th:text="${ mapaGatosObjetos.gato2.getNombre }"></span> <br>
+                Color: <span th:text="${ mapaGatosObjetos.gato2.getColor }"></span>
+                <hr>
+            </div>
+            <div>
+                Nombre: <span th:text="${ mapaGatosObjetos.gato3.getNombre }"></span> <br>
+                Color: <span th:text="${ mapaGatosObjetos.gato3.getColor }"></span>
+                <hr>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

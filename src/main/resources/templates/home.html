@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo}"></title>
+   
+    <!-- Concatenando un valor -->
+    <!-- Concantendo al valor a la variable -->
+    <!-- <title th:text="${miTituloDePagina + ' gatos'}"></title> -->
+
+    <link rel="stylesheet" href="/css/arreglitos.css" type="text/css">
+
+</head>
+<body>
+
+    <div class="nav">
+        <a href="/app/inicio">
+            <img src="/icons/home.svg" alt="">
+        </a> &nbsp;&nbsp;&nbsp;<--- Por aqui puedes vovler al inicio (<small>asies, para esto si me tome el tiempo, salu2</small>)
+    </div>
+
+    <h3>Mi listado de gatos (Con Interfaces)</h3>
+
+    <div th:each=" gato : ${miListaDeGatitos} ">
+
+        <span th:text="${gato.getNombre}"></span>
+
+    </div>
+
+</body>
+</html>
